@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ja">
+<body>
+    <head>
+        <meta charset="utf-8" />
+        <title>クイズゲーム　正解発表</title>
+    </head>
+    <h2>不正解</h2>
+    <body>不正解です。</body>
+    <form action="{% url 'monndai2_show' %}" method="post">
+        {% csrf_token %}
+        →
+        <input type="image" src="{% static "app/button/start_button.png" %}" name="start_button">
+    </form>
+</body>
+</html>

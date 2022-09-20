@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ja">
+<head>
+    <meta charset="utf-8" />
+    <title>クイズゲーム</title>
+</head>
+
+<body>
+    <h1>問題<br>ドリーさんの好きなサメは何？</h1>
+    <br/>
+    <table>
+        <td>シロワニ</td>
+    </table>
+    <form action="{% url 'move_to_seikaipage' %}?question_number=2" method="post">
+        {% csrf_token %}
+        →
+        <input type="image" src="{% static "app/button/start_button.png" %}" name="start_button">
+    </form>
+
+<br>
+
+    <table>
+        <td>チョウザメ</td>
+    </table>
+    <form action="{% url 'move_to_fuseikaipage' %}" method="post">
+        {% csrf_token %}
+        →
+        <input type="image" src="{% static "app/button/start_button.png" %}" name="start_button"> 
+    </form>
+</body>
+</html>
