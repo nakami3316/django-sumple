@@ -154,3 +154,6 @@ websocket-client==1.4.0
 yarl==1.7.2
 zipp==1.0.0
 zope.interface==4.7.1
+
+
+dj_database_url==1.0.0
