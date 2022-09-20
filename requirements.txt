@@ -157,3 +157,4 @@ zope.interface==4.7.1
 
 
 dj_database_url==1.0.0
+django_heroku==0.3.1
