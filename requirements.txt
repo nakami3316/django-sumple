@@ -143,7 +143,7 @@ Twisted==18.9.0
 typing_extensions==4.3.0
 
 
-unattended-upgrades==0.1
+
 urllib3==1.25.8
 virtualenv==20.16.3
 virtualenv-clone==0.3.0
