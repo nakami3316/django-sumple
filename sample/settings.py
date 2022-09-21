@@ -77,7 +77,7 @@ TEMPLATES = [
         },
     },
 ]
-
+#######################################################
 WSGI_APPLICATION = 'sample.wsgi.application'
 
 
