@@ -169,8 +169,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #  from .local_settings import *
 # except ImportError:
 #  pass
-# if not DEBUG:
-#  SECRET_KEY = '***************************************' #削除したSECRET_KEYをコピペします
+if not DEBUG:
+  SECRET_KEY = '***************************************' #削除したSECRET_KEYをコピペします
 
 import django_heroku
 django_heroku.settings(locals())
