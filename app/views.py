@@ -3,9 +3,9 @@ from .models import Quiz
 # Create your views here.
 #下記のコードは追加
 def monndai_show(request):
-    question = Quiz.objects.order_by('?').first()
-    context = {'question': question}
-    return render(request,'templates.html',context)
+    # question = Quiz.objects.order_by('?').first()
+    # context = {'question': question}
+    return render(request,'templates.html')
 
 def move_to_seikaipage(request):
     return render(request, 'seikaipage.html')
