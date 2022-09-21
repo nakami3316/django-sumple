@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os #追加
+import environ
+
+env = environ.Env()
+env.read_env('.env')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -171,7 +175,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #  pass
 #if not DEBUG:
 # SECRET_KEY = '***************************************' #削除したSECRET_KEYをコピペします
-SECRET_KEY = os.getenv('SECRET_KEY') #削除したSECRET_KEYをコピペします
+SECRET_KEY = env('SECRET_KEY') #削除したSECRET_KEYをコピペします
 
 import django_heroku
 django_heroku.settings(locals())
