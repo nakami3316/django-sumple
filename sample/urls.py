@@ -18,9 +18,5 @@ from django.urls import path,include ##includeの記述追加
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('',include('app.urls')),##ココ追加
-    path('', views.monndai_show, name='monndai_show'),
-    path('templates/seikai', views.move_to_seikaipage, name='move_to_seikaipage'),
-    path('templates/fuseikai', views.move_to_fuseikaipage, name='move_to_fuseikaipage'),
-    path('templates/monndai2', views.monndai2_show, name='monndai2_show'),
+    path('',include('app.urls')),##ココ追加
 ] 
