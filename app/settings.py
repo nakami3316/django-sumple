@@ -15,7 +15,7 @@ import os #追加
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+SECRET_KEY ='django-insecure-snk2uf8%*@6!v!(3un)g7qqiix-gdryxw=sn(ons!hr)(t0y(*'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False #デプロイ
+DEBUG = True #デプロイ
 
 #変更
 
@@ -58,7 +58,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'sample.urls'
+ROOT_URLCONF = 'app.urls'
 
 TEMPLATES = [
     {
@@ -78,7 +78,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'sample.wsgi.application'
+WSGI_APPLICATION = 'app.wsgi.application'
 
 
 # Database
@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'sample.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -137,19 +137,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')#デプロイ
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#Heroku database
-import dj_database_url
-db_from_env = dj_database_url.config()
-DATABASES['default'].update(db_from_env)
-db_from_env = dj_database_url.config(conn_max_age=600,
-ssl_require=True)
-DATABASES['default'].update(db_from_env)
-try:
- from .local_settings import *
-except ImportError:
- pass
-if not DEBUG:
- SECRET_KEY = '***************************************' #削除したSECRET_KEYをコピペします
-
-import django_heroku
-django_heroku.settings(locals())
+#SQLite3
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}

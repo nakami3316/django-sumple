@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ja">
+<head>
+    <meta charset="utf-8" />
+    <title>クイズゲーム</title> 
+</head>
+
+<body>
+    <h1>問題<br>{{question.text}}</h1>
+    <br/>
+    <table>
+        <td>{{question.answer1}}</td>
+    </table>
+
+    {% if question.correct_answer == 1 %}
+        <form action="{% url 'move_to_seikaipage' %}" method="post">
+            {% csrf_token %}
+            →
+            <!--<input type="button" name="start_button">-->
+            <input type="image" src="{% static "app/button/start_button.png" %}" name="start_button">
+        </form>
+        <table>
+            <td>{{question.answer2}}</td>
+        </table>
+        <form action="{% url 'move_to_fuseikaipage' %}" method="post">
+            {% csrf_token %}
+            →
+            <!--<input type="button" name="start_button">-->
+            <input type="image" src="{% static "app/button/start_button.png" %}" name="start_button">
+        </form>
+    {% else %}
+        <form action="{% url 'move_to_fuseikaipage' %}" method="post">
+            {% csrf_token %}
+            →
+            <!--<input type="button" name="start_button">-->
+            <input type="image" src="{% static "app/button/start_button.png" %}" name="start_button">
+        </form>
+        <table>
+            <td>{{question.answer2}}</td>
+        </table>
+        <form action="{% url 'move_to_seikaipage' %}" method="post">
+            {% csrf_token %}
+            →
+            <!--<input type="button" name="start_button">-->
+            <input type="image" src="{% static "app/button/start_button.png" %}" name="start_button">
+        </form>
+    {% endif %}
+</body>
+</html>

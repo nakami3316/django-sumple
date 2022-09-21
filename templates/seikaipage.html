@@ -9,7 +9,7 @@
     </head>
     <h2>正解</h2>
     <body>正解です。</body>
-    <form action="{% url 'monndai2_show' %}" method="post">
+    <form action="{% url 'monndai_show' %}" method="post">
         {% csrf_token %}
         →
         <input type="image" src="{% static "app/button/start_button.png" %}" name="start_button">
