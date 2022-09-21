@@ -12,10 +12,14 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os #追加
+import environ
+
+env = environ.Env()
+env.read_env('.env')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-SECRET_KEY ='django-insecure-snk2uf8%*@6!v!(3un)g7qqiix-gdryxw=sn(ons!hr)(t0y(*'
+SECRET_KEY = env('SECRET_KEY')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
