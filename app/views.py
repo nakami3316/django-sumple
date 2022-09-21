@@ -2,14 +2,6 @@ from django.shortcuts import render
 from .models import Quiz
 # Create your views here.
 #下記のコードは追加
-'''
-def monndai_show(request):
-    context = {
-        #'question_text' : 'チョウザメはサメかどうか？',
-        'content' : Quiz.objects.first().text,
-    }
-    return render(request,'templates.html',context)
-'''
 def monndai_show(request):
     question = Quiz.objects.order_by('?').first()
     context = {'question': question}
