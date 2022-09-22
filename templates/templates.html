@@ -9,25 +9,24 @@
 
 <body>
     <h4><a href="{% url 'create' %}">問題追加</a></h4>
-    <h1>問題<br>{{question.text}}</h1>
+<h1>
+    問題<br>{{question.text}}
     <br/>
-<h2>
-    <table>
-        <td>{{question.answer1}}</td>
-    </table>
+    <br/>
+    <br/>
     {% if question.correct_answer == 1 %}
-        →<a href="{% url 'move_to_seikaipage' %}">select</a>
-        <table>
-            <td>{{question.answer2}}</td>
-        </table>
-        →<a href="{% url 'move_to_fuseikaipage' %}">select</a>
+        ①<a href="{% url 'move_to_seikaipage' %}">{{question.answer1}}</a>
+
+        ②<a href="{% url 'move_to_fuseikaipage' %}">{{question.answer2}}</a>
+
+
     {% else %}
-        →<a href="{% url 'move_to_fuseikaipage' %}">select</a>
-        <table>
-            <td>{{question.answer2}}</td>
-        </table>
-        →<a href="{% url 'move_to_seikaipage' %}">select</a>
+        ①<a href="{% url 'move_to_fuseikaipage' %}">{{question.answer1}}</a>
+        
+        ②<a href="{% url 'move_to_seikaipage' %}">{{question.answer2}}</a>
+
+
     {% endif %}
-</h2>
+</h1>
 </body>
 </html>
