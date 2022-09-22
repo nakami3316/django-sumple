@@ -8,51 +8,26 @@
 </head>
 
 <body>
-    問題追加
-    <!-- <form action="{% url 'move_to_AddText' %}" method="post">
-        {% csrf_token %}
-        →
-        <input type="image" src="{% static "app/button/start_button.png" %}" name="start_button">
-    </form> -->
-    <p><a href="{% url 'create' %}">新規作成</a></p>
+    <h4><a href="{% url 'create' %}">問題追加</a></h4>
     <h1>問題<br>{{question.text}}</h1>
     <br/>
+<h2>
     <table>
         <td>{{question.answer1}}</td>
     </table>
-
     {% if question.correct_answer == 1 %}
-        <form action="{% url 'move_to_seikaipage' %}" method="post">
-            {% csrf_token %}
-            →
-            <!--<input type="button" name="start_button">-->
-            <input type="image" src="{% static "app/button/start_button.png" %}" name="start_button">
-        </form>
+        →<a href="{% url 'move_to_seikaipage' %}">select</a>
         <table>
             <td>{{question.answer2}}</td>
         </table>
-        <form action="{% url 'move_to_fuseikaipage' %}" method="post">
-            {% csrf_token %}
-            →
-            <!--<input type="button" name="start_button">-->
-            <input type="image" src="{% static "app/button/start_button.png" %}" name="start_button">
-        </form>
+        →<a href="{% url 'move_to_fuseikaipage' %}">select</a>
     {% else %}
-        <form action="{% url 'move_to_fuseikaipage' %}" method="post">
-            {% csrf_token %}
-            →
-            <!--<input type="button" name="start_button">-->
-            <input type="image" src="{% static "app/button/start_button.png" %}" name="start_button">
-        </form>
+        →<a href="{% url 'move_to_fuseikaipage' %}">select</a>
         <table>
             <td>{{question.answer2}}</td>
         </table>
-        <form action="{% url 'move_to_seikaipage' %}" method="post">
-            {% csrf_token %}
-            →
-            <!--<input type="button" name="start_button">-->
-            <input type="image" src="{% static "app/button/start_button.png" %}" name="start_button">
-        </form>
+        →<a href="{% url 'move_to_seikaipage' %}">select</a>
     {% endif %}
+</h2>
 </body>
 </html>

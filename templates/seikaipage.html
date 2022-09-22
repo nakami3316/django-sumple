@@ -2,17 +2,15 @@
 {% load static %}
 <html lang="ja">
 <body>
+<h1>
     <head>
         <link rel="icon" href="{% static 'img/favicon.ico' %}">
         <meta charset="utf-8" />
         <title>クイズゲーム　正解発表</title>
     </head>
-    <h2>正解</h2>
-    <body>正解です。</body>
-    <form action="{% url 'monndai_show' %}" method="post">
-        {% csrf_token %}
-        →
-        <input type="image" src="{% static "app/button/start_button.png" %}" name="start_button">
-    </form>
+    正解
+    <br>
+    →<a href="{% url 'monndai_show' %}">next</a>
+</h1>
 </body>
 </html>
