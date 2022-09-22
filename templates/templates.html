@@ -8,6 +8,13 @@
 </head>
 
 <body>
+    問題追加
+    <!-- <form action="{% url 'move_to_AddText' %}" method="post">
+        {% csrf_token %}
+        →
+        <input type="image" src="{% static "app/button/start_button.png" %}" name="start_button">
+    </form> -->
+    <p><a href="{% url 'create' %}">新規作成</a></p>
     <h1>問題<br>{{question.text}}</h1>
     <br/>
     <table>
