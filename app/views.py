@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Quiz
 # Create your views here.
 #下記のコードは追加
-def monndai_show(request):
+def templates(request):
     question = Quiz.objects.order_by('?').first()
     context = {'question': question}
     return render(request,'templates.html',context)
@@ -26,7 +26,8 @@ from django.urls import reverse_lazy
 class TodoCreate(CreateView):
     model = Quiz
     fields = "__all__"
-    success_url = reverse_lazy("list")
+    #success_url = reverse_lazy("list")
+    success_url = reverse_lazy('complete')
 
 class TodoList(ListView):
     model = Quiz

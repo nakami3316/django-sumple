@@ -2,15 +2,15 @@
 {% load static %}
 <html lang="ja">
 <body>
-<h1>
-    <head>
-        <link rel="icon" href="{% static 'img/favicon.ico' %}">
-        <meta charset="utf-8" />
-        <title>Q-easy　正解発表</title>
-    </head>
-    不正解
-    <br>
-    →<a href="{% url 'monndai_show' %}">next</a>
-</h1>
+    <h1>
+        <head>
+            <link rel="icon" href="{% static 'img/favicon.ico' %}">
+            <meta charset="utf-8" />
+            <title>Q-easy　正解発表</title>
+        </head>
+        不正解
+        <br>
+        <a href="{% url 'templates' %}">next</a>
+    </h1>
 </body>
 </html>
