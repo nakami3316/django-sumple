@@ -5,8 +5,9 @@ urlpatterns = [
     path('', views.templates, name='templates'),
     path('Q-easy/correct', views.move_to_seikaipage, name='move_to_seikaipage'),
     path('Q-easy/incorrect', views.move_to_fuseikaipage, name='move_to_fuseikaipage'),
-    path("quiz_list",views.TodoList.as_view(), name="list"),
-    path("quiz_complete",views.TodoList.as_view(), name="complete"),
-    # path("detail/<int:pk>", views.TodoDetail.as_view(), name="detail"),
-    path("create/", views.TodoCreate.as_view(), name="create"),
+    path("Q-easy/quiz_list/",views.TodoList.as_view(), name="list"),
+    path("Q-easy/quiz_complete/",views.quiz_complete, name="complete"),
+    path("Q-easy/create/", views.TodoCreate.as_view(), name="create"),
+    path("update/<int:pk>", views.TodoUpdate.as_view(), name="update"),
+    path("delete/<int:pk>", views.TodoDelete.as_view(), name="delete"),
 ]##ここは適宜追加する都度uploadします。 

@@ -13,22 +13,30 @@ def move_to_seikaipage(request):
 def move_to_fuseikaipage(request):
     return render(request, 'fuseikaipage.html')
 
+def quiz_complete(request):
+    return render(request, 'quiz_complete.html')
 
 # #下記はtodoを参考にした
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from django.urls import reverse_lazy
-
-# class QuizDetail(DetailView):
-#     model = Quiz
-#     context_object_name = "task"
 
 class TodoCreate(CreateView):
     model = Quiz
     fields = "__all__"
-    #success_url = reverse_lazy("list")
     success_url = reverse_lazy('complete')
 
 class TodoList(ListView):
     model = Quiz
     context_object_name = "tasks"
+
+class TodoUpdate(UpdateView):
+    model = Quiz
+    fields = "__all__"
+    success_url = reverse_lazy("list")
+
+class TodoDelete(DeleteView):
+    model = Quiz
+    # context_object_name = "task"
+    fields = "__all__"
+    success_url = reverse_lazy("list")

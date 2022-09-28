@@ -25,6 +25,8 @@
                 <td>{{ task.answer1 }}</td>
                 <td>{{ task.answer2 }}</td>
                 <td>{{ task.correct_answer }}</td>
+                <td><a href="{% url 'delete' task.pk %}">削除</a></td>
+                <td><a href="{% url 'update' task.pk %}">編集</a></td>
             </tr>
             {% endfor %}
             </tbody>
