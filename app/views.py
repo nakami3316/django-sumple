@@ -26,17 +26,17 @@ class TodoCreate(CreateView):
     fields = "__all__"
     success_url = reverse_lazy('complete')
 
-class TodoList(ListView):
-    model = Quiz
-    context_object_name = "tasks"
+# class TodoList(ListView):
+#     model = Quiz
+#     context_object_name = "tasks"
 
-class TodoUpdate(UpdateView):
-    model = Quiz
-    fields = "__all__"
-    success_url = reverse_lazy("list")
+# class TodoUpdate(UpdateView):
+#     model = Quiz
+#     fields = "__all__"
+#     success_url = reverse_lazy("list")
 
-class TodoDelete(DeleteView):
-    model = Quiz
-    # context_object_name = "task"
-    fields = "__all__"
-    success_url = reverse_lazy("list")
+# class TodoDelete(DeleteView):
+#     model = Quiz
+#     # context_object_name = "task"
+#     fields = "__all__"
+#     success_url = reverse_lazy("list")
