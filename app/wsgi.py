@@ -14,8 +14,3 @@ from django.core.wsgi import get_wsgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'app.settings')
 
 application = get_wsgi_application()
-
-# #追加
-# from wsgi_basic_auth import BasicAuth
-
-# application = BasicAuth(application)
