@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="ja">
-<body>
-    <h1>
-        <head>
-            <link rel="icon" href="{% static 'img/favicon.ico' %}">
-            <meta charset="utf-8" />
-            <title>Q-easy　正解発表</title>
-        </head>
-        不正解
-        <br>
-        <a href="{% url 'templates' %}">next</a>
-    </h1>
-</body>
+    <head>
+        <link rel="icon" href="{% static 'img/favicon.ico' %}">
+        <meta charset="utf-8" />
+        <title>Q-easy　正解発表</title>
+    </head>
+    <body>
+        <h4><a href="{% url 'create' %}">問題追加</a></h4>
+        <h1>
+            不正解
+            <br>
+            <a href="{% url 'templates' %}">next</a>
+        </h1>
+    </body>
 </html>

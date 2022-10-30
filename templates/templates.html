@@ -1,41 +1,38 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="ja">
-<head>
-    <link rel="icon" href="{% static 'img/favicon.ico' %}">
-    <meta charset="utf-8" />
-    <title>Q-easy</title> 
-</head>
-
-<body>
+    <head>
+        <link rel="icon" href="{% static 'img/favicon.ico' %}">
+        <meta charset="utf-8" />
+        <title>Q-easy</title> 
+    </head>
     <h4><a href="{% url 'create' %}">問題追加</a></h4>
-<h1>
-    問題<br>{{question.text}}
-    <br/>
-    <br/>
-    <br/>
-    {% if question.correct_answer == 1 %}
-        ①<a href="{% url 'move_to_seikaipage' %}">{{question.answer1}}</a>
-
-        ②<a href="{% url 'move_to_fuseikaipage' %}">{{question.answer2}}</a>
-
-
+    {% if user.is_authenticated %}
+        <span>Hello, {{ user.username }}</span>
+        <a class="nav-link" href="{% url 'logout' %}">ログアウト</a>
     {% else %}
-        ①<a href="{% url 'move_to_fuseikaipage' %}">{{question.answer1}}</a>
-        
-        ②<a href="{% url 'move_to_seikaipage' %}">{{question.answer2}}</a>
-
-
+        <a id="login-btn" class="nav-link" href="{% url 'social:begin' 'google-oauth2' %}" data-toggle="modal" data-target="#login-form-modal">ログイン</a>
     {% endif %}
-</h1>
-    {% extends "app/base.html" %}
-    {% block title_block %}
-    INDEX
-    {% endblock %}
-    {% block body_block %}
-<h1>Welcome</h1>
-<h2>Hello World</h2>
-    {% endblock %}
+    <body>
+        <h1>
+            問題<br>{{question.text}}
+        </h1>
+        <br/>
+        <br/>
+        <br/>
+        {% if question.correct_answer == 1 %}
+            ①<button onclick="location.href='./Q-easy/correct'">{{question.answer1}}</button>
 
-</body>
+            ②<button onclick="location.href='./Q-easy/incorrect'">{{question.answer2}}</button>
+
+
+        {% else %}
+            ①<button onclick="location.href='./Q-easy/incorrect'">{{question.answer1}}</button>
+            
+            ②<button onclick="location.href='./Q-easy/correct'">{{question.answer2}}</button>
+
+
+        {% endif %}
+    
+    </body>
 </html>

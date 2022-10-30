@@ -1,5 +1,9 @@
 from django.shortcuts import render
 from .models import Quiz
+# #下記はtodoを参考にした
+from django.views.generic import CreateView
+from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect
 # Create your views here.
 #下記のコードは追加
 def templates(request):
@@ -16,10 +20,11 @@ def move_to_fuseikaipage(request):
 def quiz_complete(request):
     return render(request, 'quiz_complete.html')
 
-# #下記はtodoを参考にした
-from django.views.generic import CreateView
+def LoginView(request):
+    return HttpResponseRedirect('social:begin', kwargs=dict(backend='google-oauth2'))
 
-from django.urls import reverse_lazy
+def index(request):
+    return render(request,'templates.html')
 
 class TodoCreate(CreateView):
     model = Quiz

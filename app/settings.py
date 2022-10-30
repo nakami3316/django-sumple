@@ -20,6 +20,8 @@ env.read_env('.env')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env('SECRET_KEY')
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = env('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')  # クライアントID
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = env('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET') # クライアント シークレット
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -41,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',##ココ追加
+    'social_django',  # 追加
 ]
 
 MIDDLEWARE = [
@@ -60,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',  #追加
 ]
 
 ROOT_URLCONF = 'app.urls'
@@ -77,10 +81,16 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',  # 追加
+                'social_django.context_processors.login_redirect', # 追加
             ],
         },
     },
 ]
+
+LOGIN_URL = 'login' # 追加
+LOGIN_REDIRECT_URL = '/' # 追加
+LOGOUT_REDIRECT_URL='/' # 追加
 
 WSGI_APPLICATION = 'app.wsgi.application'
 
@@ -150,3 +160,9 @@ DATABASES = {
 }
 
 ALLOWED_HOSTS = ['*']
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+SOCIAL_AUTH_POSTGRES_JSONFIELD = True
